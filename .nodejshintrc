@@ -1,0 +1,29 @@
+{
+    "asi": false,
+    "expr": false,
+    "curly": true,
+    "white": false,
+    "indent": 4,
+    "undef": true,
+    "node": true,
+    "noarg": true,
+    "newcap": true,
+    "immed": true,
+    "freeze": true,
+    "eqeqeq": true,
+    "camelcase": true,
+    "predef": [
+        "FormBot",
+        "socket",
+        "confirm",
+        "alert",
+        "require",
+        "__dirname",
+        "process",
+        "exports",
+        "console",
+        "Buffer",
+        "module",
+        "require"
+    ]
+}

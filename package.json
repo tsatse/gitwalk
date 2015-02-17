@@ -1,0 +1,23 @@
+{
+  "name": "gitwalk",
+  "description": "",
+  "version": "0.0.1",
+  "author": "tsatse",
+  "keywords": [],
+  "devDependencies": {
+    "grunt": "*",
+    "jshint": "^2.5.8",
+    "precommit-hook": "^1.0.7",
+    "shelljs": "*"
+  },
+  "bin": {
+    "gitwalk": "./bin/gitwalk.js"
+  },
+  "main": "src/index.js",
+  "dependencies": {
+    "cli-color": "^0.3.2",
+    "es5-shim": "^3.4.0",
+    "git-wrapper": "^0.1.1",
+    "npmlog": "0.0.6"
+  }
+}
