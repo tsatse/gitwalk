@@ -5,10 +5,8 @@
   "author": "tsatse",
   "keywords": [],
   "devDependencies": {
-    "grunt": "*",
     "jshint": "^2.5.8",
-    "precommit-hook": "^1.0.7",
-    "shelljs": "*"
+    "precommit-hook": "^1.0.7"
   },
   "bin": {
     "gitwalk": "./bin/gitwalk.js"
