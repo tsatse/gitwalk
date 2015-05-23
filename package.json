@@ -1,7 +1,7 @@
 {
   "name": "gitwalk",
-  "description": "Executes a git command over several subfolder-contained repositories",
-  "version": "0.0.1",
+  "description": "Executes a git command over recursively searched subfolder-contained repositories",
+  "version": "0.1.0",
   "author": "Joachim Revol-Tissot",
   "keywords": [],
   "devDependencies": {

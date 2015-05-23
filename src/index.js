@@ -4,6 +4,11 @@ var fs = require('fs');
 var path = require('path');
 var clc = require('cli-color');
 
+
+var ignoreList = [
+    'node_modules'
+];
+
 function applySerialAsync(collection, asyncMethod, whenOneDone) {
     var index = 0;
 
@@ -20,20 +25,48 @@ function applySerialAsync(collection, asyncMethod, whenOneDone) {
     iterator();
 }
 
+function flatten(array) {
+    if(array instanceof Array) {
+        return array.reduce(function(a, b) {return a.concat(flatten(b));}, []);
+    }
+    else {
+        return array;
+    }
+}
+
+function getRepos(searchPath) {
+    if(ignoreList.indexOf(path.basename(searchPath)) !== -1) {
+        return [];
+    }
+
+    searchPath = path.resolve(searchPath);
+    var result = fs.readdirSync(searchPath)
+        .map(function(filename) {
+            var currentEntry = path.join(searchPath, filename);
+            var stat = fs.statSync(currentEntry);
+            if(stat.isDirectory()) {
+                if(fs.existsSync(path.join(currentEntry, '.git'))) {
+                    return currentEntry;
+                }
+                else {
+                    return getRepos(currentEntry);
+                }
+            }
+            return null;
+        })
+        .filter(function(element) {
+            return element;
+        });
+    return flatten(result);
+}
+
 function gw(command, args) {
     if(!command) {
         console.log('missing command');
         return;
     }
 
-    var gitRepos = fs.readdirSync('.')
-        .map(function(filename) {
-            return path.resolve(path.join('./', filename));
-        })
-        .filter(function(filename) {
-            var stat = fs.statSync(filename);
-            return stat.isDirectory() && fs.existsSync(path.join(filename, '.git'));
-        });
+    var gitRepos = getRepos('.');
 
     applySerialAsync(
         gitRepos,
