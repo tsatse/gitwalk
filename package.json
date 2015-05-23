@@ -3,13 +3,12 @@
   "description": "Executes a git command over recursively searched subfolder-contained repositories",
   "version": "0.1.0",
   "author": "Joachim Revol-Tissot",
-  "keywords": [],
-  "devDependencies": {
-    "jshint": "^2.5.8"
-  },
   "keywords": [
     "git"
   ],
+  "devDependencies": {
+    "jshint": "^2.5.8"
+  },
   "repository": {
     "type": "git",
     "url": "https://github.com/tsatse/gitwalk.git"
@@ -26,7 +25,7 @@
   },
   "main": "src/index.js",
   "dependencies": {
-    "cli-color": "^0.3.2",
+    "chalk": "^1.0.0",
     "es5-shim": "^3.4.0",
     "git-wrapper": "^0.1.1",
     "npmlog": "0.0.6"

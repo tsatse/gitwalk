@@ -2,7 +2,7 @@ var Git = require('git-wrapper');
 var git = new Git();
 var fs = require('fs');
 var path = require('path');
-var clc = require('cli-color');
+var chalk = require('chalk');
 
 
 var ignoreList = [
@@ -76,7 +76,7 @@ function gw(command, args) {
         },
         function(repo, error, result) {
             if(error || result) {
-                console.log(clc.magenta(repo));
+                console.log(chalk.magenta(path.dirname(repo)) + '/' + chalk.magenta.bold(path.basename(repo)));
             }
             if(error) {
                 console.error(error);
